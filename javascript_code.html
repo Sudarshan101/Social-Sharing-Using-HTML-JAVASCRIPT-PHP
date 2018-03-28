@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<h1>Social Sharing using JAVASCRIPT</h1>
+		
+		<p>Here is the simple JAVASCRIPT function just use it in you page</p>
+		<p><b>Replace "YOUR_URL", "YOUR_TITLE", "YOUR_HASHTAGS" with your content</b></p>
+
+		<div>
+			<a id="facebook-link" target="_blank">Facebook</a> | 
+			<a id="twitter-link" target="_blank">Twitter</a> | 
+			<a id="whatsapp-link" target="_blank">Whatsapp</a> | 
+			<a id="google-link" target="_blank">Google Plus</a> | 
+			<a id="linkedin-link" target="_blank">Linkedin</a> | 
+		</div>
+	</body>
+	<script>
+		function socialsharingbuttons(social, params){
+			var button= '';
+			switch (social) {
+				case 'facebook':
+					button='http://www.facebook.com/share.php?u='+params.url;
+					break;
+				case 'twitter':
+					button='https://twitter.com/share?url='+params.url+'&amp;text='+params.title+'&amp;hashtags='+params.tags;
+					break;
+				case 'google-plus':
+					button='https://plus.google.com/share?url='+params.url;
+					break;
+				case 'whatsapp':
+					if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+						button='whatsapp://send?text='+params.url;
+					}else{
+						button='https://web.whatsapp.com/send?text='+params.url;
+					}
+					break;
+				case 'linkedin':
+					button='http://www.linkedin.com/shareArticle?mini=true&amp;url='+params.url;
+					break;
+				default:
+					break;
+			}
+			return button; 
+		}
+		
+		var params={'url':'YOUR_URL', 'title':'YOUR_TITLE', 'tags':'YOUR_HASHTAGS'};
+		document.getElementById('facebook-link').href=socialsharingbuttons('facebook', params);
+		document.getElementById('twitter-link').href=socialsharingbuttons('twitter', params);
+		document.getElementById('google-link').href=socialsharingbuttons('google-plus', params);
+		document.getElementById('whatsapp-link').href=socialsharingbuttons('whatsapp', params);
+		document.getElementById('linkedin-link').href=socialsharingbuttons('linkedin', params);
+		
+		
+	</script>
+</html>
